@@ -1,6 +1,6 @@
-lib{concurrentqueue}: hxx{*}
+lib{concurrentqueue}: hxx{**}
 {
-  cxx.export.poptions += "-I$src_base" "-I$src_root"
+  cxx.export.poptions += "-I$src_base/moodycamel" "-I$src_root"
 }
 
 if ($cxx.target.class != 'windows')
@@ -9,10 +9,10 @@ if ($cxx.target.class != 'windows')
     lib{concurrentqueue}: cxx.export.libs += "-lpthread"
 }
 
-hxx{*}:
+hxx{**}:
 {
   install         = include/concurrentqueue/
   install.subdirs = true
 }
 
-lib{concurrentqueue}: cxx.pkgconfig.include = include/ include/concurrentqueue/
+lib{concurrentqueue}: cxx.pkgconfig.include = include/ include/concurrentqueue/moodycamel/
